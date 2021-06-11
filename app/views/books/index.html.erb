@@ -23,14 +23,14 @@
       <tr>
         <td>リーダブルコード</td>
         <td>より良いコードを書くためのシンプルで実践的なテクニック</td>
-        <td><a class="show_9" href="/books/9">Show</a></td>
+        <td> <%=link_to "Show","/books"%></td>
         <td><a class="edit_9" href="/books/9/edit">Edit</a></td>
         <td><a data-confirm="Are you sure?" class="destroy_9" rel="nofollow" data-method="delete" href="/books/9">Destroy</a></td>
       </tr>
       <tr>
         <td>トラブル知らずのシステム設計</td>
         <td>システム設計の要点を図解で説明してくれます</td>
-        <td><a class="show_10" href="/books/10">Show</a></td>
+        <td><%=link_to "Show","/books"%></td>
         <td><a class="edit_10" href="/books/10/edit">Edit</a></td>
         <td><a data-confirm="Are you sure?" class="destroy_10" rel="nofollow" data-method="delete" href="/books/10">Destroy</a></td>
       </tr>
@@ -74,19 +74,10 @@
 
 
 <h2>New book</h2>
-<form class="new_book" id="new_book" action="/books" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="iWPBylHQ8NFi4ZMvZLfKBLqlCxBo3rAJ5Asa8RDrWCE2fPVWic0XEfHW8o9fJdgQmcWOAfWJ7vPKPLYT9m9ItQ==">
-
-  <div class="field">
-    <label for="book_title">Title</label>
-    <input class="book_title" type="text" name="book[title]" id="book_title">
-  </div>
-
-  <div class="field">
-    <label for="book_body">Body</label>
-    <textarea class="book_body" name="book[body]" id="book_body"></textarea>
-  </div>
-
-  <div class="actions">
-    <input type="submit" name="commit" value="Create Book" data-disable-with="Create Book">
-  </div>
-</form>
+<%= form_with model: @book, local:true do |f| %>
+  <h4>タイトル</h4>
+  <%= f.text_field :title %>
+  <h4>本文</h4>
+  <%= f.text_area :body %>
+  <%= f.submit '投稿' %>
+<% end %>
