@@ -7,6 +7,5 @@
 <h2>body:</h2>
 <p><%= @book.body %></p>
 
-
-<a class="edit_95" href="/books/95/edit">Edit</a>
-<a class="back" href="/books">Back</a>
+<div><%=link_to "Edit",edit_book_path(@book.id) %></div>
+<div><%=link_to "Back",books_path %></div>
